@@ -67,44 +67,93 @@ public class Main
                 mat[i][j+1] = 3;
             }
         }
-        i = ran.nextInt(7);
-        j = ran.nextInt(7);
+        while (sh21==0) {
+            i = ran.nextInt(7);
+            j = ran.nextInt(7);
 
-        ras = ran.nextInt(2);
-        if (ras==0 && i==6 && j==6 && mat[i][j]==0 && mat[i][j-1]==0 && mat[i][j-2]==0 && mat[i-1][j]==0 && mat[i-1][j-1]==0 && mat[i-1][j-2]==0) {
-            mat[i][j] = 2;
-            mat[i][j-1] = 2;
-        }
-        else if (i==6 && j==6 && mat[i][j]==0 && mat[i][j-1]==0 && mat[i-1][j]==0 && mat[i-1][j-1]==0 && mat[i-2][j]==0 && mat[i-2][j-1]==0) {
-            mat[i][j] = 2;
-            mat[i-1][j] = 2;
-        }
-        else if (ras==0 && i==6 && j==0 && mat[i][j]==0 && mat[i][j+1]==0 && mat[i-1][j]==0 && mat[i-1][j+1]==0 && mat[i-2][j]==0 && mat[i-2][j+1]==0) {
-            mat[i][j] = 2;
-            mat[i-1][j] = 2;
-        }
-        else if (i==6 && j==0 && mat[i][j]==0 && mat[i][j+1]==0 && mat[i][j+2]==0 && mat[i-1][j]==0 && mat[i-1][j+1]==0 && mat[i-1][j+2]==0) {
-            mat[i][j] = 2;
-            mat[i][j+1] = 2;
-        }
-        else if (ras==0 && i==0 && j==0 && mat[i][j]==0 && mat[i][j+1]==0 && mat[i+1][j]==0 && mat[i+1][j+1]==0 && mat[i+2][j]==0 && mat[i+2][j+1]==0) {
-            mat[i][j] = 2;
-            mat[i+1][j] = 2;
-        }
-        else if (i==0 && j==0 && mat[i][j]==0 && mat[i][j+1]==0 && mat[i][j+2]==0 && mat[i+1][j]==0 && mat[i+1][j+1]==0 && mat[i+1][j+2]==0) {
-            mat[i][j] = 2;
-            mat[i][j+1] = 2;
-        }
-        else if (ras==0 && i==0 && j==6 && mat[i][j]==0 && mat[i][j-1]==0 && mat[i+1][j]==0 && mat[i+1][j-1]==0 && mat[i+2][j]==0 && mat[i+2][j-1]==0) {
-            mat[i][j] = 2;
-            mat[i+1][j] = 2;
-        }
-        else if (i==0 && j==6 && mat[i][j]==0 && mat[i][j-1]==0 && mat[i][j-2]==0 && mat[i+1][j]==0 && mat[i+1][j-1]==0 && mat[i+1][j-2]==0) {
-            mat[i][j] = 2;
-            mat[i][j-1] = 2;
-        }
-        else if (i==0) {
-            if (ras==0 && )
+            ras = ran.nextInt(2);
+            if (ras == 0 && i == 6 && j == 6 && mat[i][j] == 0 && mat[i][j - 1] == 0 && mat[i][j - 2] == 0 && mat[i - 1][j] == 0 && mat[i - 1][j - 1] == 0 && mat[i - 1][j - 2] == 0) {
+                mat[i][j] = 2;
+                mat[i][j - 1] = 2;
+                sh21++;
+            } else if (i == 6 && j == 6 && mat[i][j] == 0 && mat[i][j - 1] == 0 && mat[i - 1][j] == 0 && mat[i - 1][j - 1] == 0 && mat[i - 2][j] == 0 && mat[i - 2][j - 1] == 0) {
+                mat[i][j] = 2;
+                mat[i - 1][j] = 2;
+                sh21++;
+            } else if (ras == 0 && i == 6 && j == 0 && mat[i][j] == 0 && mat[i][j + 1] == 0 && mat[i - 1][j] == 0 && mat[i - 1][j + 1] == 0 && mat[i - 2][j] == 0 && mat[i - 2][j + 1] == 0) {
+                mat[i][j] = 2;
+                mat[i - 1][j] = 2;
+                sh21++;
+            } else if (i == 6 && j == 0 && mat[i][j] == 0 && mat[i][j + 1] == 0 && mat[i][j + 2] == 0 && mat[i - 1][j] == 0 && mat[i - 1][j + 1] == 0 && mat[i - 1][j + 2] == 0) {
+                mat[i][j] = 2;
+                mat[i][j + 1] = 2;
+                sh21++;
+            } else if (ras == 0 && i == 0 && j == 0 && mat[i][j] == 0 && mat[i][j + 1] == 0 && mat[i + 1][j] == 0 && mat[i + 1][j + 1] == 0 && mat[i + 2][j] == 0 && mat[i + 2][j + 1] == 0) {
+                mat[i][j] = 2;
+                mat[i + 1][j] = 2;
+                sh21++;
+            } else if (i == 0 && j == 0 && mat[i][j] == 0 && mat[i][j + 1] == 0 && mat[i][j + 2] == 0 && mat[i + 1][j] == 0 && mat[i + 1][j + 1] == 0 && mat[i + 1][j + 2] == 0) {
+                mat[i][j] = 2;
+                mat[i][j + 1] = 2;
+                sh21++;
+            } else if (ras == 0 && i == 0 && j == 6 && mat[i][j] == 0 && mat[i][j - 1] == 0 && mat[i + 1][j] == 0 && mat[i + 1][j - 1] == 0 && mat[i + 2][j] == 0 && mat[i + 2][j - 1] == 0) {
+                mat[i][j] = 2;
+                mat[i + 1][j] = 2;
+                sh21++;
+            } else if (i == 0 && j == 6 && mat[i][j] == 0 && mat[i][j - 1] == 0 && mat[i][j - 2] == 0 && mat[i + 1][j] == 0 && mat[i + 1][j - 1] == 0 && mat[i + 1][j - 2] == 0) {
+                mat[i][j] = 2;
+                mat[i][j - 1] = 2;
+                sh21++;
+            }
+            else if (i==0) i++;
+            else if (i==6) i--;
+            else if (j==0) j++;
+            else if (j==6) j--;
+            else if (i == 5 && j == 5 && mat[i][j] == 0 && mat[i-1][j - 1] == 0 && mat[i-1][j] == 0 && mat[i-1][j+1] == 0 && mat[i][j - 1] == 0 && mat[i][j+1] == 0 && mat[i+1][j-1]==0 && mat[i+1][j]==0 && mat[i+1][j+1]==0) {
+                if (ras==0) {
+                    mat[i][j] = 2;
+                    mat[i + 1][j] = 2;
+                    sh21++;
+                }
+                else
+                {
+                    mat[i][j] = 2;
+                    mat[i][j+1] = 2;
+                    sh21++;
+                }
+            } else if (i == 5 && j == 5 && mat[i][j] == 0 && mat[i-1][j - 1] == 0 && mat[i-1][j] == 0 && mat[i-1][j+1] == 0 && mat[i][j - 1] == 0 && mat[i][j+1] == 0 && mat[i+1][j-1]==0 && mat[i+1][j]==0 && mat[i+1][j+1]==0 && mat[i-2][j-1]==0 && mat[i-2][j]==0 && mat[i-2][j+1]==0) {
+                mat[i][j] = 2;
+                mat[i - 1][j] = 2;
+                sh21++;
+            }
+//            else if (ras == 0 && i == 0 && j == 1 && mat[i][j] == 0 && mat[i][j + 1] == 0 && mat[i][j - 1] == 0 && mat[i + 1][j] == 0 && mat[i + 1][j + 1] == 0 && mat[i + 1][j - 1] == 0) {
+//                mat[i][j] = 2;
+//                mat[i][j - 1] = 2;
+//            } else if (ras == 1 && i == 0 && j == 1 && mat[i][j] == 0 && mat[i][j + 1] == 0 && mat[i][j - 1] == 0 && mat[i + 1][j] == 0 && mat[i + 1][j + 1] == 0 && mat[i + 1][j - 1] == 0 && mat[i + 2][j] == 0 && mat[i + 2][j + 1] == 0 && mat[i + 2][j - 1] == 0) {
+//                mat[i][j] = 2;
+//                mat[i + 1][j] = 2;
+//            } else if (ras == 2 && i == 0 && j == 1 && mat[i][j] == 0 && mat[i][j + 1] == 0 && mat[i][j - 1] == 0 && mat[i + 1][j] == 0 && mat[i + 1][j + 1] == 0 && mat[i + 1][j - 1] == 0 && mat[i][j + 2] == 0 && mat[i + 1][j + 2] == 0) {
+//                mat[i][j] = 2;
+//                mat[i][j + 1] = 2;
+//            } else if (ras == 0 && i == 1 && j == 0 && mat[i - 1][j] == 0 && mat[i][j] == 0 && mat[i + 1][j] == 0 && mat[i - 1][j + 1] == 0 && mat[i][j + 1] == 0 && mat[i + 1][j + 1] == 0) {
+//                mat[i][j] = 2;
+//                mat[i - 1][j] = 2;
+//            } else if (ras == 1 && i == 1 && j == 0 && mat[0][0] == 0 && mat[0][1] == 0 && mat[0][2] == 0 && mat[1][0] == 0 && mat[1][1] == 0 && mat[1][2] == 0 && mat[2][0] == 0 && mat[2][1] == 0 && mat[2][2] == 0) {
+//                mat[i][j] = 2;
+//                mat[1][1] = 2;
+//            } else if (ras == 2 && i == 1 && j == 0 && mat[0][0] == 0 && mat[0][1] == 0 && mat[1][0] == 0 && mat[1][1] == 0 && mat[2][0] == 0 && mat[2][1] == 0 && mat[3][0] == 0 && mat[3][1] == 0) {
+//                mat[i][j] = 2;
+//                mat[2][0] = 2;
+//            } else if (ras == 0 && i == 0 && j == 5 && mat[0][4] == 0 && mat[0][5] == 0 && mat[0][6] == 0 && mat[1][4] == 0 && mat[1][5] == 0 && mat[1][6] == 0) {
+//                mat[i][j] = 2;
+//                mat[0][6] = 2;
+//            } else if (ras == 1 && i == 0 && j == 5 && mat[0][4] == 0 && mat[0][5] == 0 && mat[0][6] == 0 && mat[1][4] == 0 && mat[1][5] == 0 && mat[1][6] == 0 && mat[0][3] == 0 && mat[1][3] == 0) {
+//                mat[i][j] = 2;
+//                mat[0][4] = 2;
+//            } else if (ras == 2 && i == 0 && j == 5 && mat[0][4] == 0 && mat[0][5] == 0 && mat[0][6] == 0 && mat[1][4] == 0 && mat[1][5] == 0 && mat[1][6] == 0 && mat[2][4] == 0 && mat[2][5] == 0 && mat[2][6] == 0) {
+//                mat[i][j] = 2;
+//                mat[1][5] = 2;
+//            }
         }
 //        while (mat[i][j]!=0 || mat[i][j-1]!=0 || mat[i][j+1]!=0 || mat[i-1][j]!=0 || mat[i-1][j-1]!=0 || mat[i-1][j+1]!=0 || mat[i+1][j-1]!=0 || mat[i+1][j]!=0 || mat[i+1][j+1]!=0) {
 //            i = ran.nextInt(5)+1;
