@@ -682,6 +682,48 @@ public class Main6
                 sh13++;
             }
         }
+        sh13=0;
+        while (sh13==0) {
+            i = ran.nextInt(7);
+            j = ran.nextInt(7);
+
+            if (i==0 && j==0 && mat[i][j]==0 && mat[i][j+1]==0 && mat[i+1][j]==0 && mat[i+1][j+1]==0) {
+                mat[i][j] = 1;
+                sh13++;
+            }
+            else if (i==0 && j==6 && mat[i][j]==0 && mat[i][j-1]==0 && mat[i+1][j-1]==0 && mat[i+1][j]==0) {
+                mat[i][j] = 1;
+                sh13++;
+            }
+            else if (i==6 && j==6 && mat[i][j]==0 && mat[i][j-1]==0 && mat[i-1][j-1]==0 && mat[i-1][j]==0) {
+                mat[i][j] = 1;
+                sh13++;
+            }
+            else if (i==6 && j==0 && mat[i][j]==0 && mat[i-1][j+1]==0 && mat[i][j+1]==0 && mat[i-1][j]==0) {
+                mat[i][j] = 1;
+                sh13++;
+            }
+            else if (i==0 && j>0 && j<6 && mat[i][j-1]==0 && mat[i][j]==0 && mat[i][j+1]==0 && mat[i+1][j-1]==0 && mat[i+1][j]==0 && mat[i+1][j+1]==0) {
+                mat[i][j] = 1;
+                sh13++;
+            }
+            else if (i==6 && j>0 && j<6 && mat[i][j-1]==0 && mat[i][j]==0 && mat[i][j+1]==0 && mat[i-1][j-1]==0 && mat[i-1][j]==0 && mat[i-1][j+1]==0) {
+                mat[i][j] = 1;
+                sh13++;
+            }
+            else if (j==0 && i>0 && i<6 && mat[i][j]==0 && mat[i][j+1]==0 && mat[i-1][j]==0 && mat[i-1][j+1]==0 && mat[i+1][j]==0 && mat[i+1][j+1]==0) {
+                mat[i][j] = 1;
+                sh13++;
+            }
+            else if (j==6 && i>0 && i<6 && mat[i][j]==0 && mat[i][j-1]==0 && mat[i-1][j]==0 && mat[i-1][j-1]==0 && mat[i+1][j]==0 && mat[i+1][j-1]==0) {
+                mat[i][j] = 1;
+                sh13++;
+            }
+            else if (i>0 && i<6 && j>0 && j<6 && mat[i-1][j-1]==0 && mat[i-1][j]==0 && mat[i-1][j+1]==0 && mat[i][j-1]==0 && mat[i][j]==0 && mat[i][j+1]==0 && mat[i+1][j-1]==0 && mat[i+1][j]==0 && mat[i+1][j+1]==0) {
+                mat[i][j] = 1;
+                sh13++;
+            }
+        }
         return mat;
     }
 }
