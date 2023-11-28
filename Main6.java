@@ -11,14 +11,37 @@ public class Main6
         System.out.print("Warrior, enter your name: ");
         String playerName = sc.nextLine();
 
+//        System.out.println("  --------------------------------");
+//        int[][] battleField = randomShips();
+//         for (int i=0; i<7; i++) {
+//             for (int j=0; j<7; j++) {
+//                 System.out.print("  |  "+battleField[i][j]);
+//             }
+//             System.out.println("  |");
+//             System.out.println("  --------------------------------");
+//         }
+        System.out.println("    ------------------------------------");
         int[][] battleField = randomShips();
-         for (int i=0; i<7; i++) {
-             for (int j=0; j<7; j++) {
-                 System.out.print(battleField[i][j]+" ");
-             }
-             System.out.println();
-         }
-
+        for (int i=7; i>0; i--) {
+            System.out.print(i + " ");
+            for (int j=7; j>0; j--) {
+                System.out.print("  |  ");
+            }
+            System.out.println("  |");
+            System.out.println("    ------------------------------------");
+        }
+        System.out.println("      A    B    C    D    E    F    G  ");
+        char c = 'c';
+        int a = c;
+        System.out.println(a);
+        String[] usersInput = "6;Ahfgth rtyrthy".split("");
+//        for ( int x=0; x<usersInput.length; x++) {
+//            System.out.println(usersInput[x] + "\n");
+//        }
+//        String us="hello";
+//        char columnNum=usersInput.charAt(0);
+//        System.out.println(columnNum);
+//        System.out.println(usersInput[2]);
     }
     public static int[][] randomShips () {
         Random ran = new Random();
