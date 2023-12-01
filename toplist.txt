@@ -1,0 +1,11 @@
+Ulan
+30
+Ulaneo
+27
+Value(DayOfMonth,2)'-'Value(MonthOfYear,2)'-'Value(YearOfEra,4,19,EXCEEDS_PAD) 8:Value(MinuteOfHour,2)
+Ulanchik
+28
+02-12-2023 9:06
+Uliana
+26
+02-12-2023  03:10

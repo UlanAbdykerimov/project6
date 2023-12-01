@@ -1,10 +1,16 @@
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Scanner;
 import java.util.Random;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.io.*;
 
 public class Main6
 {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         Scanner sc = new Scanner(System.in);
         Random ran = new Random();
         int[][] battleField = randomShips();
@@ -17,6 +23,7 @@ public class Main6
         int x31 = 0; int y31 = 0;
         int x32 = 0; int y32 = 0;
         int x33 = 0; int y33 = 0;
+
 
         System.out.println("          Welcome to 'SeaBattle'! Enjoy your game!");
         System.out.print("Warrior, enter your name: ");
@@ -214,6 +221,8 @@ public class Main6
                         }
                     }
                 }
+                System.out.print("\033[H\033[2J");
+                System.out.flush();
                 System.out.println("   ------------------------------------");
                 for (int i = 0; i < 7; i++) {
                     int z = i + 1;
@@ -230,10 +239,30 @@ public class Main6
                     System.out.println("   ------------------------------------");
                 }
                 System.out.println("     A    B    C    D    E    F    G  ");
-                System.out.print("\033[H\033[2J");
-                System.out.flush();
                 attemtps++;
+                if (hits==11) {
+                    System.out.println("Wonderful, captain " + playerName + "! Thanks to your clear leadership we won the battle in " + attemtps + " attempts!");
+                    try (FileWriter f = new FileWriter("toplist.txt", true);
+                         BufferedWriter b = new BufferedWriter(f);
+                         PrintWriter p = new PrintWriter(b);) {
+
+                        int localTime = 0;
+                        String dayPeriod = " ";
+
+                        LocalDateTime myDateObj = LocalDateTime.now();
+                        DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("dd-MM-yyyy  HH:mm");
+                        String formattedDate = myDateObj.format(myFormatObj);
+
+                        p.println(playerName);
+                        p.println(attemtps);
+                        p.println(formattedDate);
+
+                    } catch (IOException i) {
+                        i.printStackTrace();
+                    }
+                }
             }
+
         }
     }
     public static int[][] randomShips () {
