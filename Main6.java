@@ -7,6 +7,11 @@ import java.util.Random;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.io.*;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Objects;
 
 public class Main6
 {
@@ -19,6 +24,9 @@ public class Main6
         int attemtps = 1;
         int ship1 = 0;
         int ship2 = 0;
+        ArrayList<Integer> arr2 = new ArrayList<Integer>();
+        ArrayList<String> arr1 = new ArrayList<String>();
+        ArrayList<String> arr3 = new ArrayList<String>();
 
         int x31 = 0; int y31 = 0;
         int x32 = 0; int y32 = 0;
@@ -246,8 +254,6 @@ public class Main6
                          BufferedWriter b = new BufferedWriter(f);
                          PrintWriter p = new PrintWriter(b);) {
 
-                        int localTime = 0;
-                        String dayPeriod = " ";
 
                         LocalDateTime myDateObj = LocalDateTime.now();
                         DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("dd-MM-yyyy  HH:mm");
@@ -259,6 +265,75 @@ public class Main6
 
                     } catch (IOException i) {
                         i.printStackTrace();
+                    }
+                    BufferedReader reader;
+
+                            try {
+                                reader = new BufferedReader(new FileReader("toplist.txt"));
+                                String line = reader.readLine();
+                                arr1.add(line);
+                                line = reader.readLine();
+
+
+                                int o = 0;
+                                while (line != null) {
+                                    int number = Integer.parseInt(line);
+                                    arr2.add(number);
+                                    line = reader.readLine();
+                                    arr3.add(line);
+                                    line = reader.readLine();
+                                    arr1.add(line);
+// read next line
+                                    line = reader.readLine();
+                                    o++;
+                                }
+
+                                reader.close();
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+                    int change2 = 0;
+                    String change1 = " ";
+                    String change3 = " ";
+                    for (int w=0; w<arr2.size(); w++) {
+                        for (int e=0; e<arr2.size(); e++) {
+                            if (arr2.get(w)<arr2.get(e)) {
+                                change2 = arr2.get(w);
+                                arr2.set(w, arr2.get(e));
+                                arr2.set(e, change2);
+                                change1 = arr1.get(w);
+                                arr1.set(w, arr1.get(e));
+                                arr1.set(e, change1);
+                                change3 = arr3.get(w);
+                                arr3.set(w, arr3.get(e));
+                                arr3.set(e, change3);
+                            }
+                        }
+                    }
+                    for (int w=0; w<arr2.size(); w++) {
+                        for (int e=0; e<arr2.size(); e++) {
+                            if (Objects.equals(arr1.get(w), arr1.get(e)) && w!=e) {
+                                arr1.remove(e);
+                                arr2.remove(e);
+                                arr3.remove(e);
+                            }
+                        }
+                    }
+                    System.out.println();
+                    if (arr1.size()>10) System.out.println(            "Top 10 best players ever: ");
+                    else System.out.println("                           Top " + arr2.size() + " best players ever: ");
+                    System.out.println();
+                    if (arr1.size()>10) {
+                        for (int w=0; w<10; w++) {
+                            int e = w + 1;
+                            System.out.println(e + ": " + arr1.get(w) + " - " + arr2.get(w) + "  (" + arr3.get(w) + ")");
+                        }
+                    }
+                    else {
+                        for (int w=0; w<arr2.size(); w++) {
+                            int e = w + 1;
+                            System.out.println(e + ": " + arr1.get(w) + " - " + arr2.get(w) + "  (" + arr3.get(w) + ")");
+                        }
                     }
                 }
             }
