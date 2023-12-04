@@ -250,6 +250,8 @@ public class Main6
                 attemtps++;
                 if (hits==11) {
                     System.out.println("Wonderful, captain " + playerName + "! Thanks to your clear leadership we won the battle in " + attemtps + " attempts!");
+                    System.out.println("We have a lot of other enemies. The crew of our ship are strongly wishing to continue the war with your leading, captain " + playerName + "! Do you want to continue to lead our ship? ");
+                    //System.out.print("Your answer, cap: ");
                     try (FileWriter f = new FileWriter("toplist.txt", true);
                          BufferedWriter b = new BufferedWriter(f);
                          PrintWriter p = new PrintWriter(b);) {
@@ -313,26 +315,48 @@ public class Main6
                     for (int w=0; w<arr2.size(); w++) {
                         for (int e=0; e<arr2.size(); e++) {
                             if (Objects.equals(arr1.get(w), arr1.get(e)) && w!=e) {
-                                arr1.remove(e);
-                                arr2.remove(e);
-                                arr3.remove(e);
+                                if (arr2.get(w)<=arr2.get(e)) {
+                                    arr1.remove(e);
+                                    arr2.remove(e);
+                                    arr3.remove(e);
+                                }
+                                else {
+                                    change2 = arr2.get(w);
+                                    arr2.set(w, arr2.get(e));
+                                    arr2.set(e, change2);
+                                    change1 = arr1.get(w);
+                                    arr1.set(w, arr1.get(e));
+                                    arr1.set(e, change1);
+                                    change3 = arr3.get(w);
+                                    arr3.set(w, arr3.get(e));
+                                    arr3.set(e, change3);
+                                    arr1.remove(e);
+                                    arr2.remove(e);
+                                    arr3.remove(e);
+                                }
                             }
                         }
                     }
-                    System.out.println();
-                    if (arr1.size()>10) System.out.println(            "Top 10 best players ever: ");
-                    else System.out.println("                           Top " + arr2.size() + " best players ever: ");
-                    System.out.println();
-                    if (arr1.size()>10) {
-                        for (int w=0; w<10; w++) {
-                            int e = w + 1;
-                            System.out.println(e + ": " + arr1.get(w) + " - " + arr2.get(w) + "  (" + arr3.get(w) + ")");
-                        }
+                    String capAnswer = sc.nextLine();
+                    if (Objects.equals(capAnswer, "YES") || Objects.equals(capAnswer, "Yes") || Objects.equals(capAnswer, "yes") || Objects.equals(capAnswer, "yess")) {
+                        hits = 0;
                     }
-                    else {
-                        for (int w=0; w<arr2.size(); w++) {
-                            int e = w + 1;
-                            System.out.println(e + ": " + arr1.get(w) + " - " + arr2.get(w) + "  (" + arr3.get(w) + ")");
+                    else if (Objects.equals(capAnswer, "NO") || Objects.equals(capAnswer, "No") || Objects.equals(capAnswer, "no")) {
+                        System.out.println();
+                        if (arr1.size() > 10) System.out.println("Top 10 best players ever: ");
+                        else
+                            System.out.println("                           Top " + arr2.size() + " best players ever: ");
+                        System.out.println();
+                        if (arr1.size() > 10) {
+                            for (int w = 0; w < 10; w++) {
+                                int e = w + 1;
+                                System.out.println(e + ": " + arr1.get(w) + " - " + arr2.get(w) + "  (" + arr3.get(w) + ")");
+                            }
+                        } else {
+                            for (int w = 0; w < arr2.size(); w++) {
+                                int e = w + 1;
+                                System.out.println(e + ": " + arr1.get(w) + " - " + arr2.get(w) + "  (" + arr3.get(w) + ")");
+                            }
                         }
                     }
                 }
