@@ -38,17 +38,36 @@ public class Main6
         String playerName = sc.nextLine();
         System.out.println("Be ready warrior, the battle is started!");
 
-        for (int i=0; i<7; i++) {
-            for (int j=0; j<7; j++) {
-                System.out.print(battleField[i][j] + " ");
-            }
-            System.out.println();
-        }
         while (hits<11) {
+            System.out.println("   ------------------------------------");
+            for (int i = 0; i < 7; i++) {
+                int z = i + 1;
+                System.out.print(z + "  ");
+                for (int j = 0; j < 7; j++) {
+                    if (battleField[i][j] >= 0 && battleField[i][j] < 4) System.out.print("|    ");
+                    else if (battleField[i][j] == 4) System.out.print("|" + blue + " () " + reset);
+                    else if (battleField[i][j] == 6 || battleField[i][j] == 7)
+                        System.out.print("|" + yellow + " ++ " + reset);
+                    else if (battleField[i][j] == 5 || battleField[i][j] == 8 || battleField[i][j] == 9)
+                        System.out.print("|" + redBack + "    " + reset);
+                }
+                System.out.println("|");
+                System.out.println("   ------------------------------------");
+            }
+            System.out.println("     A    B    C    D    E    F    G  ");
             System.out.print("Attempt #" + attemtps + "!       Captain " + playerName + ", enter the coordinates of enemy ship: ");
-            int x = sc.nextInt(); int y = sc.nextInt();
+            String xy = sc.nextLine();
+            char xChar = xy.charAt(0);
+            char yChar = xy.charAt(2);
+            int yChar2 = yChar;
+            int xChar2 = xChar;
+            int y = 0;
+            if (xChar2>90) y = xChar2-96;
+            else y = xChar2-64;
+            int x = yChar2-48;
             x = x - 1;
             y = y - 1;
+
             if (x<0 || x>6 || y<0 || y>6) System.out.println("Captain " + playerName + ", size of the enemy base is only 7x7! So, enter right coordinates!");
             else if (battleField[x][y]==4) System.out.println("Captain " + playerName + ", according to existing intelligence information, there are no enemy ships at these coordinates, so enter other coordinates to save ammunition!");
             else if (battleField[x][y]>4 && battleField[x][y]<10) System.out.println("Captain " + playerName + ", these coordinates have already been hit, enter other coordinates!");
@@ -231,27 +250,27 @@ public class Main6
                 }
                 System.out.print("\033[H\033[2J");
                 System.out.flush();
-                System.out.println("   ------------------------------------");
-                for (int i = 0; i < 7; i++) {
-                    int z = i + 1;
-                    System.out.print(z + "  ");
-                    for (int j = 0; j < 7; j++) {
-                        if (battleField[i][j] >= 0 && battleField[i][j] < 4) System.out.print("|    ");
-                        else if (battleField[i][j] == 4) System.out.print("|" + blue + " () " + reset);
-                        else if (battleField[i][j] == 6 || battleField[i][j] == 7)
-                            System.out.print("|" + yellow + " ++ " + reset);
-                        else if (battleField[i][j] == 5 || battleField[i][j] == 8 || battleField[i][j] == 9)
-                            System.out.print("|" + redBack + "    " + reset);
-                    }
-                    System.out.println("|");
-                    System.out.println("   ------------------------------------");
-                }
-                System.out.println("     A    B    C    D    E    F    G  ");
                 attemtps++;
                 if (hits==11) {
+                    System.out.println("   ------------------------------------");
+                    for (int i = 0; i < 7; i++) {
+                        int z = i + 1;
+                        System.out.print(z + "  ");
+                        for (int j = 0; j < 7; j++) {
+                            if (battleField[i][j] >= 0 && battleField[i][j] < 4) System.out.print("|    ");
+                            else if (battleField[i][j] == 4) System.out.print("|" + blue + " () " + reset);
+                            else if (battleField[i][j] == 6 || battleField[i][j] == 7)
+                                System.out.print("|" + yellow + " ++ " + reset);
+                            else if (battleField[i][j] == 5 || battleField[i][j] == 8 || battleField[i][j] == 9)
+                                System.out.print("|" + redBack + "    " + reset);
+                        }
+                        System.out.println("|");
+                        System.out.println("   ------------------------------------");
+                    }
+                    System.out.println("     A    B    C    D    E    F    G  ");
                     System.out.println("Wonderful, captain " + playerName + "! Thanks to your clear leadership we won the battle in " + attemtps + " attempts!");
                     System.out.println("We have a lot of other enemies. The crew of our ship are strongly wishing to continue the war with your leading, captain " + playerName + "! Do you want to continue to lead our ship? ");
-                    //System.out.print("Your answer, cap: ");
+                    System.out.print("Your answer, cap: ");
                     try (FileWriter f = new FileWriter("toplist.txt", true);
                          BufferedWriter b = new BufferedWriter(f);
                          PrintWriter p = new PrintWriter(b);) {
@@ -337,11 +356,22 @@ public class Main6
                             }
                         }
                     }
-                    String capAnswer = sc.nextLine();
-                    if (Objects.equals(capAnswer, "YES") || Objects.equals(capAnswer, "Yes") || Objects.equals(capAnswer, "yes") || Objects.equals(capAnswer, "yess")) {
+                    Scanner sca = new Scanner(System.in);
+                    String capAnswer = sca.nextLine();
+                    String yes1 = "YES";
+                    String yes2 = "Yes";
+                    String yes3 = "yes";
+                    String no1 = "NO";
+                    String no2 = "No";
+                    String no3 = "no";
+                    if (capAnswer.equals(yes1) || capAnswer.equals(yes2) || capAnswer.equals(yes3)) {
                         hits = 0;
+                        attemtps=0;
+                        System.out.println("The new battle is starting! GOOOOOO!!!");
+                        battleField = randomShips();
+                        sh3=0;
                     }
-                    else if (Objects.equals(capAnswer, "NO") || Objects.equals(capAnswer, "No") || Objects.equals(capAnswer, "no")) {
+                    else if (capAnswer.equals(no1) || capAnswer.equals(no2) || capAnswer.equals(no3)) {
                         System.out.println();
                         if (arr1.size() > 10) System.out.println("Top 10 best players ever: ");
                         else
