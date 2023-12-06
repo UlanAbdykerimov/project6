@@ -304,7 +304,6 @@ public class Main6
                                     arr3.add(line);
                                     line = reader.readLine();
                                     arr1.add(line);
-// read next line
                                     line = reader.readLine();
                                     o++;
                                 }
@@ -333,7 +332,7 @@ public class Main6
                     }
                     for (int w=0; w<arr2.size(); w++) {
                         for (int e=0; e<arr2.size(); e++) {
-                            if (Objects.equals(arr1.get(w), arr1.get(e)) && w!=e) {
+                            if (Objects.equals(arr1.get(w), arr1.get(e)) && w!=e && w<e) {
                                 if (arr2.get(w)<=arr2.get(e)) {
                                     arr1.remove(e);
                                     arr2.remove(e);
@@ -366,7 +365,7 @@ public class Main6
                     String no3 = "no";
                     if (capAnswer.equals(yes1) || capAnswer.equals(yes2) || capAnswer.equals(yes3)) {
                         hits = 0;
-                        attemtps=0;
+                        attemtps=1;
                         System.out.println("The new battle is starting! GOOOOOO!!!");
                         battleField = randomShips();
                         sh3=0;
